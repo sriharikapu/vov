@@ -3,9 +3,10 @@ var browserSync = require('browser-sync').create();
 var sass        = require('gulp-sass');
 const template = require('gulp-template');
 var browserify = require('gulp-browserify');
+var handlebars = require('gulp-handlebars');
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['sass'], function() {
+gulp.task('serve', ['sass','scripts','hbs','html'], function() {
 
     browserSync.init({
         server: "../vov/dist"
@@ -14,7 +15,16 @@ gulp.task('serve', ['sass'], function() {
     gulp.watch("../vov/scss/**/*.scss", ['sass']);
     gulp.watch("../vov/js/*.js", ['scripts']);
     gulp.watch("../vov/index.html", ['html']);
+	gulp.watch("../vov/**/*.hbs",['hbs']);
     gulp.watch("../vov/**/*.html").on('change', browserSync.reload);
+});
+
+// Compile hbs
+gulp.task('hbs', () => {
+	return gulp.src("../vov/**/*.hbs")
+		.pipe(handlebars())
+		.pipe(gulp.dest("../vov/dist/hbs"))
+		.pipe(browserSync.stream());
 });
 
 // Compile sass into CSS & auto-inject into browsers
@@ -32,8 +42,8 @@ gulp.task('scripts', function() {
     // Single entry point to browserify 
     gulp.src('../vov/js/*.js')
         .pipe(browserify({
-          insertGlobals : true,
-          debug : !gutil.env.production
+          insertGlobals : true
+          // debug : !gutil.env.production
         }))
         .pipe(gulp.dest('dist/js'))
         .pipe(browserSync.stream());

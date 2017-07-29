@@ -21,6 +21,7 @@
     "browser-sync": "^2.18.13",
     "gulp": "^3.9.1",
     "gulp-browserify": "^0.5.1",
+    "browserify-shim": "^3.8.14",
     "gulp-handlebars": "^4.0.0",
     "gulp-sass": "^3.1.0",
     "gulp-template": "^4.0.0",
@@ -28,6 +29,15 @@
     "node-normalize-scss": "^3.0.0"
   },
   "dependencies": {
+    "jquery": "^3.2.1",
     "lowdb": "^0.16.2"
+  },
+  "browserify-shim": {
+    "jquery": "$"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
   }
 }
