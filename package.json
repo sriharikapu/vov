@@ -26,5 +26,8 @@
     "gulp-template": "^4.0.0",
     "node-font-awesome": "^1.0.2",
     "node-normalize-scss": "^3.0.0"
+  },
+  "dependencies": {
+    "lowdb": "^0.16.2"
   }
 }
