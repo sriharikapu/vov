@@ -1,0 +1,30 @@
+html {
+    line-height: 1.15;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+    outline: none;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body {
+  @include three-gradient-t-b($bc-violet-dark, $bc-blue-30, $bc-violet-dark);
+  margin: 0;
+  font-size:$font-size-base;
+  font-family: $open-regular;
+  -webkit-font-smoothing: subpixel-antialiased;
+  height: 100%;
+  width: 100%;
+  line-height: 1.15;
+  color:$bc-white;
+}
