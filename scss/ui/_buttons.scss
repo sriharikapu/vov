@@ -1,0 +1,33 @@
+// buttons
+@mixin bc-button($padding, $color, $font-size, $background, $radius){
+	padding: $padding;
+	color: $color;
+	font-size: $font-size;
+	background: $background;
+	border-radius: $radius;
+}
+
+.bc-btn{
+	display: inline-block;
+	line-height: 1.428571;
+	touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+}
+
+.bc-btn-default{
+	@include bc-button(5px, white, 20x, orange, 5px)
+}
+
+.bc-btn-primary{
+	@include bc-button(20px, white, 20x, orange, 5px)
+}
+
+.bc-btn-secondory{
+	@include bc-button($bc-spacer-5 $bc-spacer-40, white, $font-size-small, inherit, 50px);
+	@include two-gradient-l-r($bc-blue-10, $bc-blue-20);
+}
